@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blexy Computer Training College - Portal Gateway</title>
+    <title>Blexy Computer Training College - Kehancha Portal</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
             margin: 0;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             background: #ffffff;
             padding: 25px;
             border-radius: 8px;
@@ -28,56 +28,50 @@
             text-align: center;
             color: #7f8c8d;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 13px;
         }
         
-        /* Auth Gateway Cards */
-        .auth-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .role-card {
-            background: #f8f9fa;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .role-card:hover {
-            border-color: #27ae60;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .role-title {
-            color: #2c3e50;
-            margin-top: 0;
-            font-size: 18px;
-        }
-        
-        /* Main Navigation Tabs */
-        .tab-nav {
+        .portal-layout {
             display: flex;
-            border-bottom: 2px solid #ddd;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .sidebar-nav {
+            width: 240px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            height: fit-content;
         }
         .tab-btn {
-            flex: 1;
-            padding: 12px 8px;
-            background: #f1f1f1;
+            padding: 12px 15px;
+            background: #e9ecef;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 14px;
             font-weight: bold;
             color: #2c3e50;
-            text-align: center;
+            text-align: left;
+            transition: 0.2s;
+        }
+        .tab-btn:hover {
+            background: #d8dde1;
         }
         .tab-btn.active {
             background: #27ae60;
             color: white;
+        }
+
+        .content-area {
+            flex: 1;
+            background: #ffffff;
+            padding: 0 10px;
         }
 
         .tab-content {
@@ -87,24 +81,24 @@
             display: block;
         }
 
-        /* Sub-Navigation Tabs */
         .sub-nav {
             display: flex;
-            gap: 5px;
+            flex-direction: column;
+            gap: 6px;
             margin-bottom: 20px;
             border-bottom: 1px solid #ccc;
-            padding-bottom: 10px;
-            flex-wrap: wrap;
+            padding-bottom: 15px;
         }
         .sub-tab-btn {
-            padding: 8px 12px;
-            background: #e9ecef;
+            padding: 10px 12px;
+            background: #f1f3f5;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 13px;
             font-weight: bold;
             color: #495057;
+            text-align: left;
         }
         .sub-tab-btn.active {
             background: #2980b9;
@@ -117,13 +111,34 @@
             display: block;
         }
 
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 450px;
+            margin: 20px auto;
+        }
+        .role-card {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: left;
+        }
+        .role-title {
+            color: #2c3e50;
+            margin-top: 0;
+            font-size: 16px;
+        }
+
         .form-row {
             display: flex;
             gap: 15px;
+            flex-direction: column;
         }
         .form-group { 
             margin-bottom: 15px; 
-            flex: 1;
+            width: 100%;
         }
         label { 
             display: block; 
@@ -164,7 +179,7 @@
             justify-content: space-between;
             align-items: center;
             background: #e9ecef;
-            padding: 8px 15px;
+            padding: 10px 15px;
             border-radius: 6px;
             margin-bottom: 20px;
         }
@@ -179,10 +194,9 @@
             background-color: #a93226;
         }
 
-        /* Metrics Grid */
         .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-direction: column;
             gap: 15px;
             margin-bottom: 25px;
         }
@@ -205,7 +219,6 @@
             color: #2c3e50;
         }
 
-        /* Tables */
         table {
             width: 100%;
             margin-top: 15px;
@@ -236,7 +249,6 @@
             font-weight: bold;
         }
         
-        /* Grade Badges */
         .grade-distinction { background-color: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
         .grade-credit { background-color: #2980b9; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
         .grade-pass { background-color: #f39c12; color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
@@ -280,8 +292,8 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            display: flex;
+            flex-direction: column;
             gap: 10px;
             margin: 15px 0;
         }
@@ -323,9 +335,77 @@
             background-color: #e9ecef;
         }
 
-        @media (max-width: 768px) {
-            .auth-container {
-                grid-template-columns: 1fr;
+        /* Certificate Styling */
+        .certificate-box {
+            background: #fffdf9;
+            border: 10px double #2c3e50;
+            padding: 40px;
+            text-align: center;
+            margin-top: 20px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .certificate-box h3 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .certificate-box h1 {
+            font-size: 32px;
+            color: #27ae60;
+            margin: 15px 0;
+            text-transform: uppercase;
+        }
+        .cert-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            display: inline-block;
+            padding: 0 30px;
+            margin: 15px 0;
+        }
+        .cert-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding: 0 40px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #certificateCard, #certificateCard * {
+                visibility: visible;
+            }
+            #certificateCard {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: none;
+                box-shadow: none;
+            }
+            .print-btn, .logout-bar, .sidebar-nav {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .form-row {
+                flex-direction: row;
+            }
+            .summary-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .metrics-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     </style>
@@ -334,548 +414,527 @@
 
 <div class="container">
     <h2>Blexy Computer Training College</h2>
-    <div class="subtitle">Kehancha, Kuria West Sub-County, Migori County | Management & Student Portal</div>
+    <div class="subtitle">Kehancha, Kuria West Sub-County, Migori County | Vertical Portal Gateway</div>
 
     <div id="toastNotification" class="toast">Notification Message</div>
 
-    <!-- MAIN LOGIN GATEWAY SCREEN -->
-    <div id="loginGateway" class="tab-content active">
-        <h3 style="text-align: center; color: #2c3e50;">Select Portal Login</h3>
-        <p style="text-align: center; color: #7f8c8d; font-size: 14px;">Choose your role below to log into your account.</p>
-
-        <div class="auth-container">
-            <!-- Admin Login Box -->
-            <div class="role-card">
-                <h4 class="role-title">Admin Portal</h4>
-                <p style="font-size: 12px; color: #7f8c8d;">Management, registration, fees & database control.</p>
-                <form id="adminLoginForm">
-                    <div class="form-group">
-                        <label for="adminPwd">Password</label>
-                        <input type="password" id="adminPwd" placeholder="Default: admin123" required>
-                    </div>
-                    <button type="submit" style="background-color: #2c3e50;">Login as Admin</button>
-                </form>
-            </div>
-
-            <!-- Trainer Login Box -->
-            <div class="role-card">
-                <h4 class="role-title">Trainer Portal</h4>
-                <p style="font-size: 12px; color: #7f8c8d;">Attendance, notes upload, results & unit students.</p>
-                <form id="trainerLoginForm">
-                    <div class="form-group">
-                        <label for="trainerSelectLogin">Select Trainer</label>
-                        <select id="trainerSelectLogin" required>
-                            <option value="">-- Choose Name --</option>
-                        </select>
-                    </div>
-                    <button type="submit" style="background-color: #2980b9;">Login as Trainer</button>
-                </form>
-            </div>
-
-            <!-- Student Login Box -->
-            <div class="role-card">
-                <h4 class="role-title">Student Portal</h4>
-                <p style="font-size: 12px; color: #7f8c8d;">Check fee statement, course outline & results.</p>
-                <form id="studentLoginForm">
-                    <div class="form-group">
-                        <label for="studentRegLogin">Registration No.</label>
-                        <input type="text" id="studentRegLogin" placeholder="e.g. BLEX/2026/001" required>
-                    </div>
-                    <button type="submit">Login as Student</button>
-                </form>
-                <p style="font-size: 12px; margin-top: 15px;">New student? <a href="#" onclick="openSignUpScreen(); return false;" style="color: #27ae60; font-weight: bold;">Register Here</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- PORTAL 1: ADMIN PORTAL -->
-    <div id="adminPortalTab" class="tab-content">
-        <div class="logout-bar">
-            <span>Logged in as: <strong>Administrator</strong></span>
-            <button type="button" class="logout-btn" onclick="portalLogout()">Logout</button>
+    <div class="portal-layout">
+        <!-- VERTICAL SIDEBAR NAVIGATION -->
+        <div class="sidebar-nav" id="sidebarNav">
+            <button class="tab-btn active" id="btnGateway" onclick="showPortal('loginGateway')">🔐 Login Gateway</button>
+            <button class="tab-btn" id="btnAdmin" onclick="showPortal('adminPortalTab')" style="display:none;">👑 Admin Portal</button>
+            <button class="tab-btn" id="btnTrainer" onclick="showPortal('trainerPortalTab')" style="display:none;">👨‍🏫 Trainer Portal</button>
+            <button class="tab-btn" id="btnStudent" onclick="showPortal('studentTab')" style="display:none;">🎓 Student Portal</button>
         </div>
 
-        <div class="sub-nav">
-            <button class="sub-tab-btn active" onclick="switchAdminSubTab('admFeeManagement', this)">Fee Management</button>
-            <button class="sub-tab-btn" onclick="switchAdminSubTab('admInstructorPortal', this)">Instructor Portal</button>
-            <button class="sub-tab-btn" onclick="switchAdminSubTab('admStudentDirectory', this)">Student Directory</button>
-            <button class="sub-tab-btn" onclick="switchAdminSubTab('admDatabaseTools', this)">Database Tools</button>
-        </div>
+        <!-- CONTENT AREA -->
+        <div class="content-area">
 
-        <div id="admFeeManagement" class="sub-content active">
-            <h3 style="color: #2c3e50; margin-top: 0;">Record Student Fee Payment & Admission</h3>
-            <form id="feeForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="studentName">Student Full Name</label>
-                        <input type="text" id="studentName" placeholder="e.g. John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="regNumber">Registration Number (Auto-Generated)</label>
-                        <input type="text" id="regNumber" readonly>
-                    </div>
-                </div>
+            <!-- LOGIN GATEWAY SCREEN -->
+            <div id="loginGateway" class="tab-content active">
+                <h3 style="color: #2c3e50; margin-top: 0;">Secure Portal Login Gateway</h3>
+                <p style="color: #7f8c8d; font-size: 13px;">Select your portal below to sign in using encrypted authentication.</p>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="course">Course / Program</label>
-                        <select id="course" required>
-                            <option value="">-- Select Course --</option>
-                            <option value="Computer Packages">Computer Packages (KES 6,000)</option>
-                            <option value="Networking">Networking (KES 4,000)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="amountPaid">Amount Paid (KES)</label>
-                        <input type="number" id="amountPaid" placeholder="Enter amount paid" required>
-                    </div>
-                </div>
+                <div class="auth-container">
+                    <!-- Staff Login -->
+                    <div class="role-card">
+                        <h4 class="role-title">Staff Portal (Admin & Trainers)</h4>
+                        <p style="font-size: 12px; color: #7f8c8d; margin-bottom: 15px;">Secured with SHA-256 password hashing.</p>
+                        <form id="staffLoginForm">
+                            <div class="form-group">
+                                <label for="staffRoleSelect">Select Role</label>
+                                <select id="staffRoleSelect" onchange="toggleStaffFields()" required>
+                                    <option value="">-- Choose Role --</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="trainer">College Trainer</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="adminPasswordGroup" style="display:none;">
+                                <label for="adminPwdInput">Admin Password</label>
+                                <input type="password" id="adminPwdInput" placeholder="Default: admin123">
+                            </div>
 
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="mpesaCode">M-Pesa Reference Code</label>
-                        <input type="text" id="mpesaCode" placeholder="e.g. QHG789XYZ" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="studentPhoto">Passport Photo (Optional)</label>
-                        <input type="file" id="studentPhoto" accept="image/*">
-                    </div>
-                </div>
+                            <div class="form-group" id="trainerSelectGroup" style="display:none;">
+                                <label for="trainerLoginDropdown">Select Trainer Profile</label>
+                                <select id="trainerLoginDropdown">
+                                    <option value="">-- Choose Trainer --</option>
+                                </select>
+                            </div>
 
-                <button type="submit">Save Fee Record</button>
-            </form>
+                            <div class="form-group" id="trainerPasswordGroup" style="display:none;">
+                                <label for="trainerPwdInput">Trainer Password</label>
+                                <input type="password" id="trainerPwdInput" placeholder="Enter assigned password">
+                            </div>
 
-            <div class="metrics-grid" style="margin-top: 30px;">
-                <div class="metric-card">
-                    <h4>Total Revenue Collected</h4>
-                    <p style="color: #27ae60;">KES <span id="totalRevenue">0</span></p>
-                </div>
-                <div class="metric-card">
-                    <h4>Total Outstanding Balances</h4>
-                    <p style="color: #e67e22;">KES <span id="totalBalances">0</span></p>
-                </div>
-                <div class="metric-card">
-                    <h4>Registered Students</h4>
-                    <p><span id="totalStudentsCount">0</span></p>
+                            <button type="submit" style="background-color: #2c3e50;">Login to Staff Portal</button>
+                        </form>
+                    </div>
+
+                    <!-- Student Login -->
+                    <div class="role-card">
+                        <h4 class="role-title">Student Portal</h4>
+                        <p style="font-size: 12px; color: #7f8c8d; margin-bottom: 15px;">Access your fee statements, modules, certificate, and results.</p>
+                        <form id="studentLoginForm">
+                            <div class="form-group">
+                                <label for="studentRegLogin">Registration Number</label>
+                                <input type="text" id="studentRegLogin" placeholder="e.g. BLEX/2026/001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentPwdLogin">Password</label>
+                                <input type="password" id="studentPwdLogin" placeholder="Enter assigned password" required>
+                            </div>
+                            <button type="submit" style="background-color: #27ae60;">Login as Student</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="admInstructorPortal" class="sub-content">
-            <h3 style="color: #2c3e50; margin-top: 0;">Add College Trainer / Instructor</h3>
-            <form id="trainerForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="trainerName">Trainer Full Name</label>
-                        <input type="text" id="trainerName" placeholder="e.g. Jane Smith" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="trainerPhone">Phone Number</label>
-                        <input type="text" id="trainerPhone" placeholder="e.g. 0712345678" required>
-                    </div>
+            <!-- PORTAL 1: ADMIN PORTAL -->
+            <div id="adminPortalTab" class="tab-content">
+                <div class="logout-bar">
+                    <span>Logged in as: <strong>Administrator</strong></span>
+                    <button type="button" class="logout-btn" onclick="portalLogout()">Logout</button>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="trainerUnit">Unit Taking</label>
-                        <select id="trainerUnit" required>
-                            <option value="">-- Select Unit --</option>
-                            <option value="Computer Packages">Computer Packages</option>
-                            <option value="Networking">Networking</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="trainerEmail">Email Address</label>
-                        <input type="email" id="trainerEmail" placeholder="e.g. jane@blexy.ac.ke" required>
-                    </div>
+
+                <div class="sub-nav">
+                    <button class="sub-tab-btn active" onclick="switchAdminSubTab('admFeeManagement', this)">Admit Student & Fees</button>
+                    <button class="sub-tab-btn" onclick="switchAdminSubTab('admInstructorPortal', this)">Manage Trainers</button>
+                    <button class="sub-tab-btn" onclick="switchAdminSubTab('admStudentDirectory', this)">Student Directory</button>
+                    <button class="sub-tab-btn" onclick="switchAdminSubTab('admDatabaseTools', this)">Database Tools</button>
                 </div>
-                <button type="submit">Register Trainer</button>
-            </form>
 
-            <h3 style="color: #2c3e50; margin-top: 30px;">Active College Trainers</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Phone No</th>
-                        <th>Unit Taking</th>
-                        <th>Email Address</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="trainersTableBody"></tbody>
-            </table>
-        </div>
+                <div id="admFeeManagement" class="sub-content active">
+                    <h3 style="color: #2c3e50; margin-top: 0;">Admit Student & Record Fee Payment</h3>
+                    <form id="feeForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentName">Student Full Name</label>
+                                <input type="text" id="studentName" placeholder="e.g. John Doe" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="regNumber">Registration Number (Auto-Generated)</label>
+                                <input type="text" id="regNumber" readonly>
+                            </div>
+                        </div>
 
-        <div id="admStudentDirectory" class="sub-content">
-            <h3 style="color: #2c3e50; margin-top: 0;">Master Student Directory & Records</h3>
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
-                <button type="button" onclick="exportStudentsCSV()" style="width: auto; padding: 8px 15px; background: #2980b9; font-size: 13px; margin-top: 0;">Export CSV Backup</button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Photo</th>
-                        <th>Last Payment</th>
-                        <th>Name</th>
-                        <th>Reg No</th>
-                        <th>Course</th>
-                        <th>Total Paid</th>
-                        <th>Balance</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="recordsTableBody"></tbody>
-            </table>
-        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="course">Course / Program</label>
+                                <select id="course" required>
+                                    <option value="">-- Select Course --</option>
+                                    <option value="Computer Packages">Computer Packages (KES 6,000)</option>
+                                    <option value="Networking">Networking (KES 4,000)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentRawPassword">Assign Student Password</label>
+                                <input type="password" id="studentRawPassword" placeholder="Password for student portal" required>
+                            </div>
+                        </div>
 
-        <div id="admDatabaseTools" class="sub-content">
-            <h3 style="color: #2c3e50; margin-top: 0;">Database & System Maintenance</h3>
-            <p style="color: #7f8c8d; font-size: 14px;">Clear all local student records from browser cache.</p>
-            <button type="button" onclick="clearRecords()" style="max-width: 250px; background-color: #c0392b;">Clear All Student Records</button>
-        </div>
-    </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="amountPaid">Amount Paid (KES)</label>
+                                <input type="number" id="amountPaid" placeholder="Enter amount paid" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mpesaCode">M-Pesa Reference Code</label>
+                                <input type="text" id="mpesaCode" placeholder="e.g. QHG789XYZ" required>
+                            </div>
+                        </div>
 
-    <!-- PORTAL 2: TRAINER PORTAL -->
-    <div id="trainerPortalTab" class="tab-content">
-        <div class="logout-bar">
-            <span>Logged in as Trainer: <strong id="dashTrainerNameHeader">-</strong></span>
-            <button type="button" class="logout-btn" onclick="portalLogout()">Logout</button>
-        </div>
-
-        <div class="sub-nav">
-            <button class="sub-tab-btn active" onclick="switchTrainerSubTab('subAdmissions', this)">New Admissions</button>
-            <button class="sub-tab-btn" onclick="switchTrainerSubTab('subAttendance', this)">Attendance Tracker</button>
-            <button class="sub-tab-btn" onclick="switchTrainerSubTab('subFinancials', this)">Financial Statements</button>
-            <button class="sub-tab-btn" onclick="switchTrainerSubTab('subLibrary', this)">Revision Library</button>
-            <button class="sub-tab-btn" onclick="switchTrainerSubTab('subResults', this)">Result Management</button>
-        </div>
-
-        <div id="subAdmissions" class="sub-content active">
-            <h4 style="color: #2c3e50;">Admit New Student to Your Unit</h4>
-            <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-                <form id="trainerEnrollForm">
-                    <div class="form-row">
                         <div class="form-group">
-                            <label for="enrollStudentName">Student Full Name</label>
-                            <input type="text" id="enrollStudentName" placeholder="e.g. Mary Jane" required>
+                            <label for="studentPhoto">Passport Photo (Optional)</label>
+                            <input type="file" id="studentPhoto" accept="image/*">
+                        </div>
+
+                        <button type="submit">Admit Student & Save Record</button>
+                    </form>
+
+                    <div class="metrics-grid" style="margin-top: 30px;">
+                        <div class="metric-card">
+                            <h4>Total Revenue Collected</h4>
+                            <p style="color: #27ae60;">KES <span id="totalRevenue">0</span></p>
+                        </div>
+                        <div class="metric-card">
+                            <h4>Total Outstanding Balances</h4>
+                            <p style="color: #e67e22;">KES <span id="totalBalances">0</span></p>
+                        </div>
+                        <div class="metric-card">
+                            <h4>Registered Students</h4>
+                            <p><span id="totalStudentsCount">0</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="admInstructorPortal" class="sub-content">
+                    <h3 style="color: #2c3e50; margin-top: 0;">Add College Trainer / Instructor with Secure Password</h3>
+                    <form id="trainerForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="trainerName">Trainer Full Name</label>
+                                <input type="text" id="trainerName" placeholder="e.g. Jane Smith" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="trainerPhone">Phone Number</label>
+                                <input type="text" id="trainerPhone" placeholder="e.g. 0712345678" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="trainerUnit">Unit Taking</label>
+                                <select id="trainerUnit" required>
+                                    <option value="">-- Select Unit --</option>
+                                    <option value="Computer Packages">Computer Packages</option>
+                                    <option value="Networking">Networking</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="trainerEmail">Email Address</label>
+                                <input type="email" id="trainerEmail" placeholder="e.g. jane@blexy.ac.ke" required>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="enrollRegNumber">Registration Number</label>
-                            <input type="text" id="enrollRegNumber" readonly>
+                            <label for="trainerRawPassword">Assign Password</label>
+                            <input type="password" id="trainerRawPassword" placeholder="Enter secure password for trainer" required>
                         </div>
+                        <button type="submit">Register Trainer Profile</button>
+                    </form>
+
+                    <h3 style="color: #2c3e50; margin-top: 30px;">Active College Trainers</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone No</th>
+                                <th>Unit Taking</th>
+                                <th>Email Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainersTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="admStudentDirectory" class="sub-content">
+                    <h3 style="color: #2c3e50; margin-top: 0;">Master Student Directory & Records</h3>
+                    <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
+                        <button type="button" onclick="exportStudentsCSV()" style="width: auto; padding: 8px 15px; background: #2980b9; font-size: 13px; margin-top: 0;">Export CSV Backup</button>
                     </div>
-                    <div class="form-row">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Last Payment</th>
+                                <th>Name</th>
+                                <th>Reg No</th>
+                                <th>Course</th>
+                                <th>Total Paid</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="admDatabaseTools" class="sub-content">
+                    <h3 style="color: #2c3e50; margin-top: 0;">Database & System Maintenance</h3>
+                    <button type="button" onclick="clearRecords()" style="max-width: 250px; background-color: #c0392b;">Clear All Student Records</button>
+                </div>
+            </div>
+
+            <!-- PORTAL 2: TRAINER PORTAL -->
+            <div id="trainerPortalTab" class="tab-content">
+                <div class="logout-bar">
+                    <span>Logged in Trainer: <strong id="dashTrainerNameHeader">-</strong></span>
+                    <button type="button" class="logout-btn" onclick="portalLogout()">Logout</button>
+                </div>
+
+                <div class="sub-nav">
+                    <button class="sub-tab-btn active" onclick="switchTrainerSubTab('subAttendance', this)">Attendance Tracker</button>
+                    <button class="sub-tab-btn" onclick="switchTrainerSubTab('subFinancials', this)">Financial Statements</button>
+                    <button class="sub-tab-btn" onclick="switchTrainerSubTab('subLibrary', this)">Revision Library</button>
+                    <button class="sub-tab-btn" onclick="switchTrainerSubTab('subResults', this)">Result Management</button>
+                </div>
+
+                <div id="subAttendance" class="sub-content active">
+                    <h4 style="color: #2c3e50;">Mark Class Attendance</h4>
+                    <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="attDate">Session Date</label>
+                                <input type="date" id="attDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="attReg">Student Reg No</label>
+                                <input type="text" id="attReg" placeholder="e.g. BLEX/2026/001" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="attStatus">Status</label>
+                                <select id="attStatus" required>
+                                    <option value="Present">Present</option>
+                                    <option value="Absent">Absent</option>
+                                    <option value="Late">Late</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" onclick="recordAttendance()">Save Attendance</button>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Reg No</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainerAttendanceTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="subFinancials" class="sub-content">
+                    <h4 style="color: #2c3e50;">Student Fee Payment Status & Balances</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Reg No</th>
+                                <th>Total Fee</th>
+                                <th>Total Paid</th>
+                                <th>Balance Due</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainerFinancialsTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="subLibrary" class="sub-content">
+                    <h4 style="color: #2c3e50;">Upload & Share Revision Materials</h4>
+                    <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
                         <div class="form-group">
-                            <label for="enrollInitialFee">Initial Fee Paid (KES)</label>
-                            <input type="number" id="enrollInitialFee" placeholder="Enter amount paid" required>
+                            <label for="materialTitle">Title / Topic</label>
+                            <input type="text" id="materialTitle" placeholder="e.g. Excel Formulas Guide">
                         </div>
                         <div class="form-group">
-                            <label for="enrollMpesa">M-Pesa Code</label>
-                            <input type="text" id="enrollMpesa" placeholder="e.g. QHG789XYZ" required>
+                            <label for="materialDesc">Description</label>
+                            <textarea id="materialDesc" rows="2" placeholder="Brief details..."></textarea>
+                        </div>
+                        <button type="button" onclick="uploadMaterial()">Publish Material</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date Posted</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainerLibraryTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="subResults" class="sub-content">
+                    <h4 style="color: #2c3e50;">Upload Student Examination Grades</h4>
+                    <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resultReg">Student Reg No</label>
+                                <input type="text" id="resultReg" placeholder="e.g. BLEX/2026/001">
+                            </div>
+                            <div class="form-group">
+                                <label for="resultScore">Numerical Score (0 - 100)</label>
+                                <input type="number" id="resultScore" min="0" max="100" placeholder="e.g. 85" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="resultRemarks">Remarks</label>
+                            <input type="text" id="resultRemarks" placeholder="e.g. Excellent performance">
+                        </div>
+                        <button type="button" onclick="uploadResult()">Save Grade Record</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Reg No</th>
+                                <th>Score</th>
+                                <th>Grade</th>
+                                <th>Remarks</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trainerResultsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- PORTAL 3: STUDENT PORTAL -->
+            <div id="studentTab" class="tab-content">
+                <div class="logout-bar">
+                    <span>Logged in Student: <strong id="studentLoginHeader">-</strong></span>
+                    <button type="button" class="logout-btn" onclick="portalLogout()">Logout</button>
+                </div>
+
+                <div class="sub-nav">
+                    <button class="sub-tab-btn active" onclick="switchStudentSubTab('stuHome', this)">Fee Statement</button>
+                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuModules', this)">Course Outline</button>
+                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuGrades', this)">Examination Grades</button>
+                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuResources', this)">Course Resources</button>
+                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuCertificate', this)">📜 Certificate</button>
+                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuDetails', this)">Student Details</button>
+                </div>
+
+                <div id="stuHome" class="sub-content active">
+                    <div class="statement-card" id="statementCard">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img id="stmtPhoto" src="" alt="Student Photo" class="student-avatar" style="display:none;">
+                        </div>
+                        <div class="receipt-header">
+                            <h3 style="margin: 0; color: #2c3e50;">BLEXY COMPUTER TRAINING COLLEGE</h3>
+                            <p style="margin: 3px 0; font-size: 12px; color: #555;">Kehancha, Kuria West Sub-County, Migori County</p>
+                            <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 13px;">Official Student Fee Statement</p>
+                        </div>
+
+                        <div style="margin-bottom: 15px; font-size: 14px; line-height: 1.6;">
+                            <p style="margin: 3px 0;"><strong>Student Name:</strong> <span id="stmtName">-</span></p>
+                            <p style="margin: 3px 0;"><strong>Registration Number:</strong> <span id="stmtReg">-</span></p>
+                            <p style="margin: 3px 0;"><strong>Course / Program:</strong> <span id="stmtCourse">-</span></p>
+                        </div>
+
+                        <div class="summary-grid">
+                            <div class="summary-box">
+                                <h4>Course Fee</h4>
+                                <p>KES <span id="stmtTotal">0</span></p>
+                            </div>
+                            <div class="summary-box">
+                                <h4>Total Paid</h4>
+                                <p style="color: #27ae60;">KES <span id="stmtPaid">0</span></p>
+                            </div>
+                            <div class="summary-box">
+                                <h4>Balance Due</h4>
+                                <p style="color: #c0392b;">KES <span id="stmtBalance">0</span></p>
+                            </div>
+                            <div class="summary-box">
+                                <h4>Status</h4>
+                                <p id="stmtStatus" style="font-size: 13px;">-</p>
+                            </div>
+                        </div>
+
+                        <div style="background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+                            <h4 style="margin: 0 0 8px 0; color: #27ae60;">Make Fee Payment via M-Pesa STK Push</h4>
+                            <div class="form-row">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <input type="number" id="stkAmount" placeholder="Amount (KES)">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <input type="text" id="stkPhone" placeholder="M-Pesa Phone No.">
+                                </div>
+                                <div>
+                                    <button type="button" onclick="triggerStkPush()" style="margin-top: 0;">Pay STK</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h4 style="color: #2c3e50;">Payment History Log</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date & Time</th>
+                                    <th>M-Pesa Ref</th>
+                                    <th>Amount Paid</th>
+                                    <th>Balance After</th>
+                                </tr>
+                            </thead>
+                            <tbody id="statementTableBody"></tbody>
+                        </table>
+
+                        <button type="button" class="print-btn" onclick="window.print()">Print Statement / Save PDF</button>
+                    </div>
+                </div>
+
+                <div id="stuModules" class="sub-content">
+                    <h4 style="color: #2c3e50;">Detailed Course Modules & Curriculum</h4>
+                    <div id="courseModulesContainer"></div>
+                </div>
+
+                <div id="stuGrades" class="sub-content">
+                    <h4 style="color: #2c3e50;">Examination Scores & Remarks</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Registration No</th>
+                                <th>Score</th>
+                                <th>Grade</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentGradesTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="stuResources" class="sub-content">
+                    <h4 style="color: #2c3e50;">Revision Materials & Notes</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date Posted</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentResourcesTableBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- CERTIFICATE SUB-TAB -->
+                <div id="stuCertificate" class="sub-content">
+                    <h4 style="color: #2c3e50;">Official Course Completion Certificate</h4>
+                    <p style="font-size: 13px; color: #7f8c8d;">Available once course fees are fully cleared (0 balance).</p>
+                    
+                    <div id="certLockedMsg" style="background: #fdf3f2; border: 1px solid #f5c6cb; padding: 20px; border-radius: 6px; color: #721c24; text-align: center; font-weight: bold; display:none;">
+                        Certificate Locked: Please clear your remaining fee balance to unlock your completion certificate.
+                    </div>
+
+                    <div class="certificate-box" id="certificateCard" style="display:none;">
+                        <h3 style="color: #7f8c8d;">BLEXY COMPUTER TRAINING COLLEGE</h3>
+                        <p style="margin: 5px 0; font-size: 12px; color: #555;">Kehancha, Kuria West Sub-County, Migori County</p>
+                        <p style="margin: 25px 0 5px 0; font-size: 16px; font-style: italic;">This is to certify that</p>
+                        <div class="cert-name" id="certStudentName">Student Name</div>
+                        <p style="margin: 5px 0; font-size: 14px;">Registration Number: <strong id="certRegNo">-</strong></p>
+                        <p style="margin: 15px 0 5px 0; font-size: 16px; font-style: italic;">has successfully completed training and demonstrated proficiency in</p>
+                        <h1 id="certCourseName">Computer Packages</h1>
+                        
+                        <div class="cert-footer">
+                            <div>
+                                <p style="margin: 0; border-top: 1px solid #2c3e50; padding-top: 5px;">College Director</p>
+                            </div>
+                            <div>
+                                <p style="margin: 0; border-top: 1px solid #2c3e50; padding-top: 5px;">Assigned Teacher / Trainer</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="enrollPhoto">Passport Photo (Optional)</label>
-                        <input type="file" id="enrollPhoto" accept="image/*">
+
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button type="button" class="print-btn" id="printCertBtn" onclick="window.print()" style="display:none; max-width: 300px; margin: 0 auto;">Print Certificate for Student</button>
                     </div>
-                    <button type="submit">Enroll Student</button>
-                </form>
+                </div>
+
+                <div id="stuDetails" class="sub-content">
+                    <h4 style="color: #2c3e50;">Student Information</h4>
+                    <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 20px; border-radius: 6px; line-height: 1.8;">
+                        <img id="detPhoto" src="" alt="Student Photo" class="student-avatar" style="display:none; margin: 0 auto 15px auto;">
+                        <p style="margin: 5px 0;"><strong>Full Name:</strong> <span id="detName">-</span></p>
+                        <p style="margin: 5px 0;"><strong>Registration Number:</strong> <span id="detReg">-</span></p>
+                        <p style="margin: 5px 0;"><strong>Course:</strong> <span id="detCourse">-</span></p>
+                        <p style="margin: 5px 0;"><strong>Location:</strong> Kehancha, Kuria West, Migori County</p>
+                    </div>
+                </div>
             </div>
 
-            <h4 style="color: #2c3e50;">Enrolled Students in Your Unit</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Photo</th>
-                        <th>Student Name</th>
-                        <th>Reg No</th>
-                        <th>Course / Unit</th>
-                        <th>Date Registered</th>
-                    </tr>
-                </thead>
-                <tbody id="trainerAdmissionsTableBody"></tbody>
-            </table>
-        </div>
-
-        <div id="subAttendance" class="sub-content">
-            <h4 style="color: #2c3e50;">Mark Class Attendance</h4>
-            <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="attDate">Session Date</label>
-                        <input type="date" id="attDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="attReg">Student Reg No</label>
-                        <input type="text" id="attReg" placeholder="e.g. BLEX/2026/001" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="attStatus">Status</label>
-                        <select id="attStatus" required>
-                            <option value="Present">Present</option>
-                            <option value="Absent">Absent</option>
-                            <option value="Late">Late</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="button" onclick="recordAttendance()">Save Attendance</button>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Reg No</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="trainerAttendanceTableBody"></tbody>
-            </table>
-        </div>
-
-        <div id="subFinancials" class="sub-content">
-            <h4 style="color: #2c3e50;">Student Fee Payment Status & Balances</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Reg No</th>
-                        <th>Total Fee</th>
-                        <th>Total Paid</th>
-                        <th>Balance Due</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="trainerFinancialsTableBody"></tbody>
-            </table>
-        </div>
-
-        <div id="subLibrary" class="sub-content">
-            <h4 style="color: #2c3e50;">Upload & Share Revision Materials</h4>
-            <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
-                <div class="form-group">
-                    <label for="materialTitle">Title / Topic</label>
-                    <input type="text" id="materialTitle" placeholder="e.g. Excel Formulas Guide">
-                </div>
-                <div class="form-group">
-                    <label for="materialDesc">Description</label>
-                    <textarea id="materialDesc" rows="2" placeholder="Brief details..."></textarea>
-                </div>
-                <button type="button" onclick="uploadMaterial()">Publish Material</button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date Posted</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="trainerLibraryTableBody"></tbody>
-            </table>
-        </div>
-
-        <div id="subResults" class="sub-content">
-            <h4 style="color: #2c3e50;">Upload Student Examination Grades</h4>
-            <div style="background: #fdfdfd; border: 1px solid #e0e0e0; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="resultReg">Student Reg No</label>
-                        <input type="text" id="resultReg" placeholder="e.g. BLEX/2026/001">
-                    </div>
-                    <div class="form-group">
-                        <label for="resultScore">Numerical Score (0 - 100)</label>
-                        <input type="number" id="resultScore" min="0" max="100" placeholder="e.g. 85" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="resultRemarks">Remarks</label>
-                    <input type="text" id="resultRemarks" placeholder="e.g. Excellent performance">
-                </div>
-                <button type="button" onclick="uploadResult()">Save Grade Record</button>
-            </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Reg No</th>
-                        <th>Score</th>
-                        <th>Grade</th>
-                        <th>Remarks</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="trainerResultsTableBody"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- PORTAL 3: STUDENT PORTAL -->
-    <div id="studentTab" class="tab-content">
-        <div class="logout-bar">
-            <span>Logged in Student: <strong id="studentLoginHeader">-</strong></span>
-            <button type="button" class="logout-btn" onclick="portalLogout()">Logout</button>
-        </div>
-
-        <div class="sub-nav">
-            <button class="sub-tab-btn active" onclick="switchStudentSubTab('stuHome', this)">Home / Fee Statement</button>
-            <button class="sub-tab-btn" onclick="switchStudentSubTab('stuModules', this)">Course Outline</button>
-            <button class="sub-tab-btn" onclick="switchStudentSubTab('stuGrades', this)">Examination Grades</button>
-            <button class="sub-tab-btn" onclick="switchStudentSubTab('stuResources', this)">Course Resources</button>
-            <button class="sub-tab-btn" onclick="switchStudentSubTab('stuDetails', this)">Student Details</button>
-        </div>
-
-        <div id="stuHome" class="sub-content active">
-            <div class="statement-card" id="statementCard">
-                <div style="text-align: center; margin-bottom: 15px;">
-                    <img id="stmtPhoto" src="" alt="Student Photo" class="student-avatar" style="display:none;">
-                </div>
-                <div class="receipt-header">
-                    <h3 style="margin: 0; color: #2c3e50;">BLEXY COMPUTER TRAINING COLLEGE</h3>
-                    <p style="margin: 3px 0; font-size: 12px; color: #555;">Kehancha, Kuria West Sub-County, Migori County</p>
-                    <p style="margin: 5px 0 0 0; color: #7f8c8d; font-size: 13px;">Official Student Fee Statement</p>
-                </div>
-
-                <div style="margin-bottom: 15px; font-size: 14px; line-height: 1.6;">
-                    <p style="margin: 3px 0;"><strong>Student Name:</strong> <span id="stmtName">-</span></p>
-                    <p style="margin: 3px 0;"><strong>Registration Number:</strong> <span id="stmtReg">-</span></p>
-                    <p style="margin: 3px 0;"><strong>Course / Program:</strong> <span id="stmtCourse">-</span></p>
-                </div>
-
-                <div class="summary-grid">
-                    <div class="summary-box">
-                        <h4>Course Fee</h4>
-                        <p>KES <span id="stmtTotal">0</span></p>
-                    </div>
-                    <div class="summary-box">
-                        <h4>Total Paid</h4>
-                        <p style="color: #27ae60;">KES <span id="stmtPaid">0</span></p>
-                    </div>
-                    <div class="summary-box">
-                        <h4>Balance Due</h4>
-                        <p style="color: #c0392b;">KES <span id="stmtBalance">0</span></p>
-                    </div>
-                    <div class="summary-box">
-                        <h4>Status</h4>
-                        <p id="stmtStatus" style="font-size: 13px;">-</p>
-                    </div>
-                </div>
-
-                <div style="background: #f8f9fa; border: 1px solid #e9ecef; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-                    <h4 style="margin: 0 0 8px 0; color: #27ae60;">Make Fee Payment via M-Pesa STK Push</h4>
-                    <div class="form-row">
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <input type="number" id="stkAmount" placeholder="Amount (KES)">
-                        </div>
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <input type="text" id="stkPhone" placeholder="M-Pesa Phone No.">
-                        </div>
-                        <div>
-                            <button type="button" onclick="triggerStkPush()" style="margin-top: 0;">Pay STK</button>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 style="color: #2c3e50;">Payment History Log</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Date & Time</th>
-                            <th>M-Pesa Ref</th>
-                            <th>Amount Paid</th>
-                            <th>Balance After</th>
-                        </tr>
-                    </thead>
-                    <tbody id="statementTableBody"></tbody>
-                </table>
-
-                <button type="button" class="print-btn" onclick="window.print()">Print Statement / Save PDF</button>
-            </div>
-        </div>
-
-        <div id="stuModules" class="sub-content">
-            <h4 style="color: #2c3e50;">Detailed Course Modules & Curriculum</h4>
-            <div id="courseModulesContainer"></div>
-        </div>
-
-        <div id="stuGrades" class="sub-content">
-            <h4 style="color: #2c3e50;">Examination Scores & Remarks</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Registration No</th>
-                        <th>Score</th>
-                        <th>Grade</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody id="studentGradesTableBody"></tbody>
-            </table>
-        </div>
-
-        <div id="stuResources" class="sub-content">
-            <h4 style="color: #2c3e50;">Revision Materials & Notes</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date Posted</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody id="studentResourcesTableBody"></tbody>
-            </table>
-        </div>
-
-        <div id="stuDetails" class="sub-content">
-            <h4 style="color: #2c3e50;">Student Information</h4>
-            <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 20px; border-radius: 6px; line-height: 1.8;">
-                <img id="detPhoto" src="" alt="Student Photo" class="student-avatar" style="display:none; margin: 0 auto 15px auto;">
-                <p style="margin: 5px 0;"><strong>Full Name:</strong> <span id="detName">-</span></p>
-                <p style="margin: 5px 0;"><strong>Registration Number:</strong> <span id="detReg">-</span></p>
-                <p style="margin: 5px 0;"><strong>Course:</strong> <span id="detCourse">-</span></p>
-                <p style="margin: 5px 0;"><strong>Location:</strong> Kehancha, Kuria West, Migori County</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- STUDENT SIGN UP MODAL SCREEN -->
-    <div id="signUpTab" class="tab-content">
-        <h3 style="text-align: center; color: #2c3e50;">New Student Online Registration</h3>
-        <p style="text-align: center; color: #7f8c8d;">Complete the form below to register your account at Blexy Computer Training College.</p>
-        <div style="max-width: 500px; margin: 20px auto; background: #f8f9fa; padding: 25px; border-radius: 8px; border: 1px solid #ddd;">
-            <form id="signUpForm">
-                <div class="form-group">
-                    <label for="signUpName">Full Name</label>
-                    <input type="text" id="signUpName" placeholder="e.g. Brian Otieno" required>
-                </div>
-                <div class="form-group">
-                    <label for="signUpReg">Assigned Registration Number</label>
-                    <input type="text" id="signUpReg" readonly>
-                </div>
-                <div class="form-group">
-                    <label for="signUpCourse">Select Course</label>
-                    <select id="signUpCourse" required>
-                        <option value="">-- Choose Course --</option>
-                        <option value="Computer Packages">Computer Packages (KES 6,000)</option>
-                        <option value="Networking">Networking (KES 4,000)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="signUpFee">Initial Fee Paid (KES)</label>
-                    <input type="number" id="signUpFee" placeholder="Enter amount paid" required>
-                </div>
-                <div class="form-group">
-                    <label for="signUpMpesa">M-Pesa Reference Code</label>
-                    <input type="text" id="signUpMpesa" placeholder="e.g. RTY543ABC" required>
-                </div>
-                <div class="form-group">
-                    <label for="signUpPhoto">Passport Photo (Optional)</label>
-                    <input type="file" id="signUpPhoto" accept="image/*">
-                </div>
-                <button type="submit">Submit Registration</button>
-                <button type="button" onclick="portalLogout()" style="background-color: #7f8c8d; margin-top: 10px;">Back to Login Gateway</button>
-            </form>
         </div>
     </div>
 </div>
@@ -906,7 +965,20 @@
         ]
     };
 
-    window.onload = function() {
+    async function hashPassword(plainTextPassword) {
+        const msgBuffer = new TextEncoder().encode(plainTextPassword);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        return hashHex;
+    }
+
+    window.onload = async function() {
+        if (!localStorage.getItem('adminPasswordHash')) {
+            const defaultAdminHash = await hashPassword('admin123');
+            localStorage.setItem('adminPasswordHash', defaultAdminHash);
+        }
+        
         populateTrainerLoginDropdown();
         generateNextRegNumber();
         displayRecords();
@@ -927,61 +999,98 @@
         const paddedId = String(nextId).padStart(3, '0');
         const autoReg = `BLEX/2026/${paddedId}`;
         if (document.getElementById('regNumber')) document.getElementById('regNumber').value = autoReg;
-        if (document.getElementById('enrollRegNumber')) document.getElementById('enrollRegNumber').value = autoReg;
-        if (document.getElementById('signUpReg')) document.getElementById('signUpReg').value = autoReg;
     }
 
-    // AUTHENTICATION LOGIC
-    document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const pwd = document.getElementById('adminPwd').value;
-        if (pwd === 'admin123') {
-            sessionStorage.setItem('userRole', 'admin');
-            showPortal('adminPortalTab');
-            showToast("Welcome Administrator!");
+    function toggleStaffFields() {
+        const role = document.getElementById('staffRoleSelect').value;
+        const adminGroup = document.getElementById('adminPasswordGroup');
+        const trainerGroup = document.getElementById('trainerSelectGroup');
+        const trainerPwdGroup = document.getElementById('trainerPasswordGroup');
+
+        if (role === 'admin') {
+            adminGroup.style.display = 'block';
+            trainerGroup.style.display = 'none';
+            trainerPwdGroup.style.display = 'none';
+        } else if (role === 'trainer') {
+            adminGroup.style.display = 'none';
+            trainerGroup.style.display = 'block';
+            trainerPwdGroup.style.display = 'block';
+            populateTrainerLoginDropdown();
         } else {
-            alert("Incorrect Admin Password! (Default: admin123)");
+            adminGroup.style.display = 'none';
+            trainerGroup.style.display = 'none';
+            trainerPwdGroup.style.display = 'none';
         }
-    });
+    }
 
-    document.getElementById('trainerLoginForm').addEventListener('submit', function(e) {
+    document.getElementById('staffLoginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        const idx = document.getElementById('trainerSelectLogin').value;
-        if (idx === "") {
-            alert("Please select a trainer profile.");
-            return;
+        const role = document.getElementById('staffRoleSelect').value;
+
+        if (role === 'admin') {
+            const pwd = document.getElementById('adminPwdInput').value;
+            const inputHash = await hashPassword(pwd);
+            const storedAdminHash = localStorage.getItem('adminPasswordHash');
+
+            if (inputHash === storedAdminHash) {
+                sessionStorage.setItem('userRole', 'admin');
+                showPortal('adminPortalTab');
+                showToast("Welcome Administrator!");
+            } else {
+                alert("Incorrect Admin Password! (Default: admin123)");
+            }
+        } else if (role === 'trainer') {
+            const idx = document.getElementById('trainerLoginDropdown').value;
+            const pwd = document.getElementById('trainerPwdInput').value;
+            if (idx === "" || !pwd) {
+                alert("Please select your trainer profile and enter your password.");
+                return;
+            }
+            let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
+            const t = trainers[idx];
+            const inputHash = await hashPassword(pwd);
+
+            if (t && inputHash === t.passwordHash) {
+                sessionStorage.setItem('userRole', 'trainer');
+                sessionStorage.setItem('trainerIndex', idx);
+                loadTrainerSession(t);
+                showPortal('trainerPortalTab');
+                showToast(`Welcome Trainer ${t.name}!`);
+            } else {
+                alert("Incorrect password for this trainer profile.");
+            }
         }
-        let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
-        const t = trainers[idx];
-        sessionStorage.setItem('userRole', 'trainer');
-        sessionStorage.setItem('trainerIndex', idx);
-        loadTrainerSession(t);
-        showPortal('trainerPortalTab');
-        showToast(`Welcome Trainer ${t.name}!`);
     });
 
-    document.getElementById('studentLoginForm').addEventListener('submit', function(e) {
+    document.getElementById('studentLoginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const reg = document.getElementById('studentRegLogin').value.trim().toLowerCase();
+        const pwd = document.getElementById('studentPwdLogin').value;
         let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
         const student = records.find(r => r.reg && r.reg.toLowerCase() === reg);
-        if (student) {
+
+        if (!student) {
+            alert("No student record found with that Registration Number.");
+            return;
+        }
+
+        const inputHash = await hashPassword(pwd);
+        if (inputHash === student.passwordHash) {
             sessionStorage.setItem('userRole', 'student');
             sessionStorage.setItem('studentReg', student.reg);
             loadStudentSession(student.reg);
             showPortal('studentTab');
             showToast(`Welcome ${student.name}!`);
         } else {
-            alert("No student record found with that Registration Number.");
+            alert("Incorrect password for this student account.");
         }
     });
 
-    function openSignUpScreen() {
-        showPortal('signUpTab');
-    }
-
     function portalLogout() {
         sessionStorage.clear();
+        document.getElementById('staffLoginForm').reset();
+        document.getElementById('studentLoginForm').reset();
+        toggleStaffFields();
         showPortal('loginGateway');
         showToast("Logged out successfully.");
     }
@@ -1014,12 +1123,28 @@
 
     function showPortal(tabId) {
         document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
         document.getElementById(tabId).classList.add('active');
+
+        const role = sessionStorage.getItem('userRole');
+        document.getElementById('btnAdmin').style.display = (role === 'admin') ? 'block' : 'none';
+        document.getElementById('btnTrainer').style.display = (role === 'trainer') ? 'block' : 'none';
+        document.getElementById('btnStudent').style.display = (role === 'student') ? 'block' : 'none';
+
+        if (tabId === 'loginGateway') {
+            document.getElementById('btnGateway').classList.add('active');
+        } else if (tabId === 'adminPortalTab') {
+            document.getElementById('btnAdmin').classList.add('active');
+        } else if (tabId === 'trainerPortalTab') {
+            document.getElementById('btnTrainer').classList.add('active');
+        } else if (tabId === 'studentTab') {
+            document.getElementById('btnStudent').classList.add('active');
+        }
     }
 
     function populateTrainerLoginDropdown() {
-        const select = document.getElementById('trainerSelectLogin');
-        select.innerHTML = '<option value="">-- Choose Name --</option>';
+        const select = document.getElementById('trainerLoginDropdown');
+        select.innerHTML = '<option value="">-- Choose Trainer --</option>';
         let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
         trainers.forEach((t, i) => {
             const opt = document.createElement('option');
@@ -1029,7 +1154,6 @@
         });
     }
 
-    // TRAINER SESSION
     function loadTrainerSession(trainer) {
         document.getElementById('dashTrainerNameHeader').textContent = `${trainer.name} (${trainer.unit})`;
         refreshTrainerUnitStudents(trainer.unit);
@@ -1038,7 +1162,6 @@
         displayTrainerResults();
     }
 
-    // STUDENT SESSION
     function loadStudentSession(regNo) {
         let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
         const student = records.find(r => r.reg && r.reg.toLowerCase() === regNo.toLowerCase());
@@ -1057,6 +1180,24 @@
         document.getElementById('stmtStatus').innerHTML = (student.status === "Cleared" || paid >= student.totalFee) 
             ? `<span class="badge-cleared">Cleared</span>` 
             : `<span class="badge-balance">Bal: KES ${bal}</span>`;
+
+        // Certificate logic verification
+        const certBox = document.getElementById('certificateCard');
+        const certLocked = document.getElementById('certLockedMsg');
+        const printCertBtn = document.getElementById('printCertBtn');
+
+        if (paid >= student.totalFee || student.status === "Cleared") {
+            certBox.style.display = 'block';
+            certLocked.style.display = 'none';
+            printCertBtn.style.display = 'block';
+            document.getElementById('certStudentName').textContent = student.name;
+            document.getElementById('certRegNo').textContent = student.reg;
+            document.getElementById('certCourseName').textContent = student.course;
+        } else {
+            certBox.style.display = 'none';
+            certLocked.style.display = 'block';
+            printCertBtn.style.display = 'none';
+        }
 
         const stmtPhoto = document.getElementById('stmtPhoto');
         const detPhoto = document.getElementById('detPhoto');
@@ -1115,7 +1256,6 @@
         document.getElementById('detCourse').textContent = student.course;
     }
 
-    // SUB-TAB CONTROLLERS
     function switchAdminSubTab(subId, btnElement) {
         const parent = document.getElementById('adminPortalTab');
         parent.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
@@ -1151,44 +1291,24 @@
         }
     }
 
-    // FORM HANDLERS & SAVE FUNCTIONS
-    document.getElementById('feeForm').addEventListener('submit', function(e) {
+    document.getElementById('feeForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const regInput = document.getElementById('regNumber').value.trim();
         const nameInput = document.getElementById('studentName').value;
         const courseInput = document.getElementById('course').value;
+        const rawPwd = document.getElementById('studentRawPassword').value;
         const amountPaidInput = parseFloat(document.getElementById('amountPaid').value) || 0;
         const mpesaInput = document.getElementById('mpesaCode').value.trim();
         const photoInput = document.getElementById('studentPhoto');
 
+        const passwordHash = await hashPassword(rawPwd);
+
         handlePhotoUpload(photoInput, function(photoData) {
-            saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaInput, photoData);
+            saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaInput, photoData, passwordHash);
             document.getElementById('feeForm').reset();
             generateNextRegNumber();
             displayRecords();
-            showToast("Fee payment recorded successfully.");
-        });
-    });
-
-    document.getElementById('signUpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const name = document.getElementById('signUpName').value.trim();
-        const reg = document.getElementById('signUpReg').value.trim();
-        const course = document.getElementById('signUpCourse').value;
-        const fee = parseFloat(document.getElementById('signUpFee').value) || 0;
-        const mpesa = document.getElementById('signUpMpesa').value.trim();
-        const photoInput = document.getElementById('signUpPhoto');
-
-        handlePhotoUpload(photoInput, function(photoData) {
-            saveStudentRecord(name, reg, course, fee, mpesa, photoData);
-            document.getElementById('signUpForm').reset();
-            generateNextRegNumber();
-            displayRecords();
-            sessionStorage.setItem('userRole', 'student');
-            sessionStorage.setItem('studentReg', reg);
-            loadStudentSession(reg);
-            showPortal('studentTab');
-            showToast("Account created successfully!");
+            showToast("Student admitted and password encrypted successfully.");
         });
     });
 
@@ -1211,7 +1331,7 @@
             const randomCode = "MPESA" + Math.floor(100000 + Math.random() * 900000);
             let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
             let existing = records.find(r => r.reg.toLowerCase() === reg.toLowerCase());
-            saveStudentRecord(name, reg, course, amount, randomCode, existing ? existing.photo : '');
+            saveStudentRecord(name, reg, course, amount, randomCode, existing ? existing.photo : '', existing ? existing.passwordHash : '');
             amountInput.value = ''; phoneInput.value = '';
             loadStudentSession(reg);
             displayRecords();
@@ -1219,7 +1339,7 @@
         }, 3000);
     }
 
-    function saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaCode, photoData) {
+    function saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaCode, photoData, passwordHash) {
         const totalFee = courseFeeStructure[courseInput] || 0;
         const now = new Date();
         const dateTimeString = now.toLocaleDateString() + ', ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -1234,6 +1354,7 @@
             existingStudent.lastUpdated = dateTimeString;
             existingStudent.course = courseInput;
             if (photoData) existingStudent.photo = photoData;
+            if (passwordHash) existingStudent.passwordHash = passwordHash;
             if (!existingStudent.history) existingStudent.history = [];
             existingStudent.history.push({ dateTime: dateTimeString, mpesa: mpesaCode || 'N/A', amountPaid: amountPaidInput, balanceAfter: existingStudent.balance });
         } else {
@@ -1242,7 +1363,7 @@
                 name: nameInput, reg: regInput, course: courseInput, totalFee: totalFee,
                 totalPaid: amountPaidInput, balance: newBalance > 0 ? newBalance : 0,
                 status: amountPaidInput >= totalFee ? "Cleared" : "Balance",
-                lastUpdated: dateTimeString, photo: photoData || '',
+                lastUpdated: dateTimeString, photo: photoData || '', passwordHash: passwordHash || '',
                 history: [{ dateTime: dateTimeString, mpesa: mpesaCode || 'N/A', amountPaid: amountPaidInput, balanceAfter: newBalance > 0 ? newBalance : 0 }]
             });
         }
@@ -1303,13 +1424,17 @@
         showToast("CSV exported successfully.");
     }
 
-    document.getElementById('trainerForm').addEventListener('submit', function(e) {
+    document.getElementById('trainerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
+        const rawPwd = document.getElementById('trainerRawPassword').value;
+        const passwordHash = await hashPassword(rawPwd);
+
         const trainer = {
             name: document.getElementById('trainerName').value,
             phone: document.getElementById('trainerPhone').value,
             unit: document.getElementById('trainerUnit').value,
-            email: document.getElementById('trainerEmail').value
+            email: document.getElementById('trainerEmail').value,
+            passwordHash: passwordHash
         };
         let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
         trainers.push(trainer);
@@ -1317,7 +1442,7 @@
         document.getElementById('trainerForm').reset();
         displayTrainers();
         populateTrainerLoginDropdown();
-        showToast("Trainer registered successfully!");
+        showToast("Trainer profile registered with encrypted password!");
     });
 
     function displayTrainers() {
@@ -1336,7 +1461,7 @@
     }
 
     function deleteTrainer(index) {
-        if (confirm("Remove this trainer?")) {
+        if (confirm("Remove this trainer profile?")) {
             let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
             trainers.splice(index, 1);
             localStorage.setItem('collegeTrainers', JSON.stringify(trainers));
@@ -1345,52 +1470,26 @@
         }
     }
 
-    document.getElementById('trainerEnrollForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const idx = sessionStorage.getItem('trainerIndex');
-        let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
-        const trainer = trainers[idx];
-
-        const name = document.getElementById('enrollStudentName').value.trim();
-        const reg = document.getElementById('enrollRegNumber').value.trim();
-        const feePaid = parseFloat(document.getElementById('enrollInitialFee').value) || 0;
-        const mpesa = document.getElementById('enrollMpesa').value.trim();
-        const photoInput = document.getElementById('enrollPhoto');
-
-        handlePhotoUpload(photoInput, function(photoData) {
-            saveStudentRecord(name, reg, trainer.unit, feePaid, mpesa, photoData);
-            document.getElementById('trainerEnrollForm').reset();
-            refreshTrainerUnitStudents(trainer.unit);
-            displayRecords();
-            showToast("Student enrolled successfully.");
-        });
-    });
-
     function refreshTrainerUnitStudents(unitName) {
         let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
         const unitStudents = records.filter(r => r.course && r.course.toLowerCase() === unitName.toLowerCase());
 
-        const admTbody = document.getElementById('trainerAdmissionsTableBody');
-        admTbody.innerHTML = '';
-        unitStudents.forEach(s => {
-            const imgTag = s.photo ? `<img src="${s.photo}" style="width:35px; height:35px; border-radius:50%; object-fit:cover;" />` : `-`;
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${imgTag}</td><td>${s.name}</td><td>${s.reg}</td><td>${s.course}</td><td>${s.lastUpdated || 'N/A'}</td>`;
-            admTbody.appendChild(row);
-        });
-
         const finTbody = document.getElementById('trainerFinancialsTableBody');
         finTbody.innerHTML = '';
-        unitStudents.forEach(s => {
-            const paid = parseFloat(s.totalPaid) || 0;
-            const bal = parseFloat(s.balance) || (s.totalFee - paid);
-            const statusBadge = (s.status === "Cleared" || paid >= s.totalFee) 
-                ? `<span class="badge-cleared">Cleared</span>` 
-                : `<span class="badge-balance">Bal: KES ${bal}</span>`;
-            const row = document.createElement('tr');
-            row.innerHTML = `<td>${s.name}</td><td>${s.reg}</td><td>KES ${s.totalFee}</td><td>KES ${paid}</td><td>KES ${bal > 0 ? bal : 0}</td><td>${statusBadge}</td>`;
-            finTbody.appendChild(row);
-        });
+        if (unitStudents.length === 0) {
+            finTbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: #7f8c8d;">No financial records found.</td></tr>`;
+        } else {
+            unitStudents.forEach(s => {
+                const paid = parseFloat(s.totalPaid) || 0;
+                const bal = parseFloat(s.balance) || (s.totalFee - paid);
+                const statusBadge = (s.status === "Cleared" || paid >= s.totalFee) 
+                    ? `<span class="badge-cleared">Cleared</span>` 
+                    : `<span class="badge-balance">Bal: KES ${bal}</span>`;
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${s.name}</td><td>${s.reg}</td><td>KES ${s.totalFee}</td><td>KES ${paid}</td><td>KES ${bal > 0 ? bal : 0}</td><td>${statusBadge}</td>`;
+                finTbody.appendChild(row);
+            });
+        }
     }
 
     function recordAttendance() {
