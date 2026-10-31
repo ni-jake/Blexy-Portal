@@ -335,7 +335,6 @@
             background-color: #e9ecef;
         }
 
-        /* Certificate Styling */
         .certificate-box {
             background: #fffdf9;
             border: 10px double #2c3e50;
@@ -430,61 +429,53 @@
         <!-- CONTENT AREA -->
         <div class="content-area">
 
-            <!-- LOGIN GATEWAY SCREEN -->
+            <!-- UNIFIED LOGIN GATEWAY SCREEN -->
             <div id="loginGateway" class="tab-content active">
-                <h3 style="color: #2c3e50; margin-top: 0;">Secure Portal Login Gateway</h3>
-                <p style="color: #7f8c8d; font-size: 13px;">Select your portal below to sign in using encrypted authentication.</p>
-
                 <div class="auth-container">
-                    <!-- Staff Login -->
                     <div class="role-card">
-                        <h4 class="role-title">Staff Portal (Admin & Trainers)</h4>
-                        <p style="font-size: 12px; color: #7f8c8d; margin-bottom: 15px;">Secured with SHA-256 password hashing.</p>
-                        <form id="staffLoginForm">
+                        <h4 class="role-title">Select Role & Login</h4>
+                        <p style="font-size: 12px; color: #7f8c8d; margin-bottom: 15px;">Choose your role to sign into the college portal.</p>
+                        
+                        <form id="unifiedLoginForm">
                             <div class="form-group">
-                                <label for="staffRoleSelect">Select Role</label>
-                                <select id="staffRoleSelect" onchange="toggleStaffFields()" required>
+                                <label for="portalRoleSelect">Select Role</label>
+                                <select id="portalRoleSelect" onchange="toggleUnifiedLoginFields()" required>
                                     <option value="">-- Choose Role --</option>
                                     <option value="admin">Administrator</option>
-                                    <option value="trainer">College Trainer</option>
+                                    <option value="trainer">Trainer</option>
+                                    <option value="student">Student</option>
                                 </select>
                             </div>
-                            
-                            <div class="form-group" id="adminPasswordGroup" style="display:none;">
-                                <label for="adminPwdInput">Admin Password</label>
-                                <input type="password" id="adminPwdInput" placeholder="Default: admin123">
+
+                            <!-- Admin Fields -->
+                            <div class="form-group unified-field" id="fieldAdminPwd" style="display:none;">
+                                <label for="inputAdminPwd">Admin Password</label>
+                                <input type="password" id="inputAdminPwd" placeholder="Enter admin password">
                             </div>
 
-                            <div class="form-group" id="trainerSelectGroup" style="display:none;">
-                                <label for="trainerLoginDropdown">Select Trainer Profile</label>
-                                <select id="trainerLoginDropdown">
+                            <!-- Trainer Fields -->
+                            <div class="form-group unified-field" id="fieldTrainerSelect" style="display:none;">
+                                <label for="unifiedTrainerDropdown">Select Trainer Profile</label>
+                                <select id="unifiedTrainerDropdown">
                                     <option value="">-- Choose Trainer --</option>
                                 </select>
                             </div>
-
-                            <div class="form-group" id="trainerPasswordGroup" style="display:none;">
-                                <label for="trainerPwdInput">Trainer Password</label>
-                                <input type="password" id="trainerPwdInput" placeholder="Enter assigned password">
+                            <div class="form-group unified-field" id="fieldTrainerPwd" style="display:none;">
+                                <label for="inputTrainerPwd">Trainer Password</label>
+                                <input type="password" id="inputTrainerPwd" placeholder="Enter trainer password">
                             </div>
 
-                            <button type="submit" style="background-color: #2c3e50;">Login to Staff Portal</button>
-                        </form>
-                    </div>
+                            <!-- Student Fields -->
+                            <div class="form-group unified-field" id="fieldStudentReg" style="display:none;">
+                                <label for="inputStudentReg">Registration Number</label>
+                                <input type="text" id="inputStudentReg" placeholder="e.g. BCI/001/26">
+                            </div>
+                            <div class="form-group unified-field" id="fieldStudentPwd" style="display:none;">
+                                <label for="inputStudentPwd">Student Password</label>
+                                <input type="password" id="inputStudentPwd" placeholder="Enter student password">
+                            </div>
 
-                    <!-- Student Login -->
-                    <div class="role-card">
-                        <h4 class="role-title">Student Portal</h4>
-                        <p style="font-size: 12px; color: #7f8c8d; margin-bottom: 15px;">Access your fee statements, modules, certificate, and results.</p>
-                        <form id="studentLoginForm">
-                            <div class="form-group">
-                                <label for="studentRegLogin">Registration Number</label>
-                                <input type="text" id="studentRegLogin" placeholder="e.g. BLEX/2026/001" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="studentPwdLogin">Password</label>
-                                <input type="password" id="studentPwdLogin" placeholder="Enter assigned password" required>
-                            </div>
-                            <button type="submit" style="background-color: #27ae60;">Login as Student</button>
+                            <button type="submit" id="unifiedLoginBtn" style="background-color: #2c3e50; display:none;">Login</button>
                         </form>
                     </div>
                 </div>
@@ -529,7 +520,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="studentRawPassword">Assign Student Password</label>
-                                <input type="password" id="studentRawPassword" placeholder="Password for student portal" required>
+                                <input type="text" id="studentRawPassword" placeholder="Password for student portal" required>
                             </div>
                         </div>
 
@@ -541,6 +532,17 @@
                             <div class="form-group">
                                 <label for="mpesaCode">M-Pesa Reference Code</label>
                                 <input type="text" id="mpesaCode" placeholder="e.g. QHG789XYZ" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentPhoneInput">Phone Number</label>
+                                <input type="text" id="studentPhoneInput" placeholder="e.g. 0712345678">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentEmailInput">Email Address</label>
+                                <input type="email" id="studentEmailInput" placeholder="e.g. john@student.com">
                             </div>
                         </div>
 
@@ -597,7 +599,7 @@
                         </div>
                         <div class="form-group">
                             <label for="trainerRawPassword">Assign Password</label>
-                            <input type="password" id="trainerRawPassword" placeholder="Enter secure password for trainer" required>
+                            <input type="text" id="trainerRawPassword" placeholder="Enter password for trainer" required>
                         </div>
                         <button type="submit">Register Trainer Profile</button>
                     </form>
@@ -657,6 +659,7 @@
                     <button class="sub-tab-btn" onclick="switchTrainerSubTab('subFinancials', this)">Financial Statements</button>
                     <button class="sub-tab-btn" onclick="switchTrainerSubTab('subLibrary', this)">Revision Library</button>
                     <button class="sub-tab-btn" onclick="switchTrainerSubTab('subResults', this)">Result Management</button>
+                    <button class="sub-tab-btn" onclick="switchTrainerSubTab('subTrainerProfile', this)">👤 Trainer Profile</button>
                 </div>
 
                 <div id="subAttendance" class="sub-content active">
@@ -669,7 +672,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="attReg">Student Reg No</label>
-                                <input type="text" id="attReg" placeholder="e.g. BLEX/2026/001" required>
+                                <input type="text" id="attReg" placeholder="e.g. BCI/001/26" required>
                             </div>
                             <div class="form-group">
                                 <label for="attStatus">Status</label>
@@ -744,7 +747,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="resultReg">Student Reg No</label>
-                                <input type="text" id="resultReg" placeholder="e.g. BLEX/2026/001">
+                                <input type="text" id="resultReg" placeholder="e.g. BCI/001/26">
                             </div>
                             <div class="form-group">
                                 <label for="resultScore">Numerical Score (0 - 100)</label>
@@ -770,6 +773,35 @@
                         <tbody id="trainerResultsTableBody"></tbody>
                     </table>
                 </div>
+
+                <!-- TRAINER PROFILE SUB-TAB -->
+                <div id="subTrainerProfile" class="sub-content">
+                    <h4 style="color: #2c3e50;">Manage Your Trainer Profile</h4>
+                    <form id="trainerProfileForm" style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #ddd;">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img id="trainerProfileAvatar" src="" alt="Profile Photo" class="student-avatar" style="display:none; margin: 0 auto 10px auto;">
+                        </div>
+                        <div class="form-group">
+                            <label for="editTrainerPhoto">Change Profile Picture</label>
+                            <input type="file" id="editTrainerPhoto" accept="image/*">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editTrainerPhone">Phone Number</label>
+                                <input type="text" id="editTrainerPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editTrainerEmail">Email Address</label>
+                                <input type="email" id="editTrainerEmail" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="editTrainerNewPwd">New Password (Leave blank to keep current)</label>
+                            <input type="text" id="editTrainerNewPwd" placeholder="Enter new password">
+                        </div>
+                        <button type="submit">Update Profile Details</button>
+                    </form>
+                </div>
             </div>
 
             <!-- PORTAL 3: STUDENT PORTAL -->
@@ -785,7 +817,7 @@
                     <button class="sub-tab-btn" onclick="switchStudentSubTab('stuGrades', this)">Examination Grades</button>
                     <button class="sub-tab-btn" onclick="switchStudentSubTab('stuResources', this)">Course Resources</button>
                     <button class="sub-tab-btn" onclick="switchStudentSubTab('stuCertificate', this)">📜 Certificate</button>
-                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuDetails', this)">Student Details</button>
+                    <button class="sub-tab-btn" onclick="switchStudentSubTab('stuProfile', this)">👤 Profile Settings</button>
                 </div>
 
                 <div id="stuHome" class="sub-content active">
@@ -923,15 +955,33 @@
                     </div>
                 </div>
 
-                <div id="stuDetails" class="sub-content">
-                    <h4 style="color: #2c3e50;">Student Information</h4>
-                    <div style="background: #f8f9fa; border: 1px solid #ddd; padding: 20px; border-radius: 6px; line-height: 1.8;">
-                        <img id="detPhoto" src="" alt="Student Photo" class="student-avatar" style="display:none; margin: 0 auto 15px auto;">
-                        <p style="margin: 5px 0;"><strong>Full Name:</strong> <span id="detName">-</span></p>
-                        <p style="margin: 5px 0;"><strong>Registration Number:</strong> <span id="detReg">-</span></p>
-                        <p style="margin: 5px 0;"><strong>Course:</strong> <span id="detCourse">-</span></p>
-                        <p style="margin: 5px 0;"><strong>Location:</strong> Kehancha, Kuria West, Migori County</p>
-                    </div>
+                <!-- STUDENT PROFILE SETTINGS SUB-TAB -->
+                <div id="stuProfile" class="sub-content">
+                    <h4 style="color: #2c3e50;">Manage Your Profile & Credentials</h4>
+                    <form id="studentProfileForm" style="background: #f8f9fa; padding: 20px; border-radius: 6px; border: 1px solid #ddd;">
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <img id="studentProfileAvatar" src="" alt="Profile Photo" class="student-avatar" style="display:none; margin: 0 auto 10px auto;">
+                        </div>
+                        <div class="form-group">
+                            <label for="editStudentPhoto">Change Profile Picture</label>
+                            <input type="file" id="editStudentPhoto" accept="image/*">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="editStudentPhone">Phone Number</label>
+                                <input type="text" id="editStudentPhone">
+                            </div>
+                            <div class="form-group">
+                                <label for="editStudentEmail">Email Address</label>
+                                <input type="email" id="editStudentEmail">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="editStudentNewPwd">New Password (Leave blank to keep current)</label>
+                            <input type="text" id="editStudentNewPwd" placeholder="Enter new password">
+                        </div>
+                        <button type="submit">Update Profile Details</button>
+                    </form>
                 </div>
             </div>
 
@@ -965,20 +1015,7 @@
         ]
     };
 
-    async function hashPassword(plainTextPassword) {
-        const msgBuffer = new TextEncoder().encode(plainTextPassword);
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-        return hashHex;
-    }
-
-    window.onload = async function() {
-        if (!localStorage.getItem('adminPasswordHash')) {
-            const defaultAdminHash = await hashPassword('admin123');
-            localStorage.setItem('adminPasswordHash', defaultAdminHash);
-        }
-        
+    window.onload = function() {
         populateTrainerLoginDropdown();
         generateNextRegNumber();
         displayRecords();
@@ -997,42 +1034,42 @@
         let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
         const nextId = records.length + 1;
         const paddedId = String(nextId).padStart(3, '0');
-        const autoReg = `BLEX/2026/${paddedId}`;
+        const autoReg = `BCI/${paddedId}/26`;
         if (document.getElementById('regNumber')) document.getElementById('regNumber').value = autoReg;
     }
 
-    function toggleStaffFields() {
-        const role = document.getElementById('staffRoleSelect').value;
-        const adminGroup = document.getElementById('adminPasswordGroup');
-        const trainerGroup = document.getElementById('trainerSelectGroup');
-        const trainerPwdGroup = document.getElementById('trainerPasswordGroup');
+    function toggleUnifiedLoginFields() {
+        const role = document.getElementById('portalRoleSelect').value;
+        document.querySelectorAll('.unified-field').forEach(f => f.style.display = 'none');
+        const loginBtn = document.getElementById('unifiedLoginBtn');
+        loginBtn.style.display = 'block';
 
         if (role === 'admin') {
-            adminGroup.style.display = 'block';
-            trainerGroup.style.display = 'none';
-            trainerPwdGroup.style.display = 'none';
+            document.getElementById('fieldAdminPwd').style.display = 'block';
+            loginBtn.textContent = 'Login as Administrator';
         } else if (role === 'trainer') {
-            adminGroup.style.display = 'none';
-            trainerGroup.style.display = 'block';
-            trainerPwdGroup.style.display = 'block';
+            document.getElementById('fieldTrainerSelect').style.display = 'block';
+            document.getElementById('fieldTrainerPwd').style.display = 'block';
             populateTrainerLoginDropdown();
+            loginBtn.textContent = 'Login as Trainer';
+        } else if (role === 'student') {
+            document.getElementById('fieldStudentReg').style.display = 'block';
+            document.getElementById('fieldStudentPwd').style.display = 'block';
+            loginBtn.textContent = 'Login as Student';
         } else {
-            adminGroup.style.display = 'none';
-            trainerGroup.style.display = 'none';
-            trainerPwdGroup.style.display = 'none';
+            loginBtn.style.display = 'none';
         }
     }
 
-    document.getElementById('staffLoginForm').addEventListener('submit', async function(e) {
+    document.getElementById('unifiedLoginForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const role = document.getElementById('staffRoleSelect').value;
+        const role = document.getElementById('portalRoleSelect').value;
 
         if (role === 'admin') {
-            const pwd = document.getElementById('adminPwdInput').value;
-            const inputHash = await hashPassword(pwd);
-            const storedAdminHash = localStorage.getItem('adminPasswordHash');
+            const pwd = document.getElementById('inputAdminPwd').value;
+            const plainTextAdminPassword = "admin123";
 
-            if (inputHash === storedAdminHash) {
+            if (pwd === plainTextAdminPassword) {
                 sessionStorage.setItem('userRole', 'admin');
                 showPortal('adminPortalTab');
                 showToast("Welcome Administrator!");
@@ -1040,17 +1077,16 @@
                 alert("Incorrect Admin Password! (Default: admin123)");
             }
         } else if (role === 'trainer') {
-            const idx = document.getElementById('trainerLoginDropdown').value;
-            const pwd = document.getElementById('trainerPwdInput').value;
+            const idx = document.getElementById('unifiedTrainerDropdown').value;
+            const pwd = document.getElementById('inputTrainerPwd').value;
             if (idx === "" || !pwd) {
                 alert("Please select your trainer profile and enter your password.");
                 return;
             }
             let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
             const t = trainers[idx];
-            const inputHash = await hashPassword(pwd);
 
-            if (t && inputHash === t.passwordHash) {
+            if (t && pwd === t.password) {
                 sessionStorage.setItem('userRole', 'trainer');
                 sessionStorage.setItem('trainerIndex', idx);
                 loadTrainerSession(t);
@@ -1059,38 +1095,33 @@
             } else {
                 alert("Incorrect password for this trainer profile.");
             }
-        }
-    });
+        } else if (role === 'student') {
+            const reg = document.getElementById('inputStudentReg').value.trim().toLowerCase();
+            const pwd = document.getElementById('inputStudentPwd').value;
+            let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
+            const student = records.find(r => r.reg && r.reg.toLowerCase() === reg);
 
-    document.getElementById('studentLoginForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const reg = document.getElementById('studentRegLogin').value.trim().toLowerCase();
-        const pwd = document.getElementById('studentPwdLogin').value;
-        let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
-        const student = records.find(r => r.reg && r.reg.toLowerCase() === reg);
+            if (!student) {
+                alert("No student record found with that Registration Number.");
+                return;
+            }
 
-        if (!student) {
-            alert("No student record found with that Registration Number.");
-            return;
-        }
-
-        const inputHash = await hashPassword(pwd);
-        if (inputHash === student.passwordHash) {
-            sessionStorage.setItem('userRole', 'student');
-            sessionStorage.setItem('studentReg', student.reg);
-            loadStudentSession(student.reg);
-            showPortal('studentTab');
-            showToast(`Welcome ${student.name}!`);
-        } else {
-            alert("Incorrect password for this student account.");
+            if (pwd === student.password) {
+                sessionStorage.setItem('userRole', 'student');
+                sessionStorage.setItem('studentReg', student.reg);
+                loadStudentSession(student.reg);
+                showPortal('studentTab');
+                showToast(`Welcome ${student.name}!`);
+            } else {
+                alert("Incorrect password for this student account.");
+            }
         }
     });
 
     function portalLogout() {
         sessionStorage.clear();
-        document.getElementById('staffLoginForm').reset();
-        document.getElementById('studentLoginForm').reset();
-        toggleStaffFields();
+        document.getElementById('unifiedLoginForm').reset();
+        toggleUnifiedLoginFields();
         showPortal('loginGateway');
         showToast("Logged out successfully.");
     }
@@ -1143,7 +1174,8 @@
     }
 
     function populateTrainerLoginDropdown() {
-        const select = document.getElementById('trainerLoginDropdown');
+        const select = document.getElementById('unifiedTrainerDropdown');
+        if (!select) return;
         select.innerHTML = '<option value="">-- Choose Trainer --</option>';
         let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
         trainers.forEach((t, i) => {
@@ -1156,11 +1188,49 @@
 
     function loadTrainerSession(trainer) {
         document.getElementById('dashTrainerNameHeader').textContent = `${trainer.name} (${trainer.unit})`;
+        document.getElementById('editTrainerPhone').value = trainer.phone || '';
+        document.getElementById('editTrainerEmail').value = trainer.email || '';
+        
+        const avatar = document.getElementById('trainerProfileAvatar');
+        if (trainer.photo) {
+            avatar.src = trainer.photo;
+            avatar.style.display = 'block';
+        } else {
+            avatar.style.display = 'none';
+        }
+
         refreshTrainerUnitStudents(trainer.unit);
         displayAttendanceLog();
         displayTrainerLibrary();
         displayTrainerResults();
     }
+
+    document.getElementById('trainerProfileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const idx = sessionStorage.getItem('trainerIndex');
+        let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
+        if (!trainers[idx]) return;
+
+        const phone = document.getElementById('editTrainerPhone').value.trim();
+        const email = document.getElementById('editTrainerEmail').value.trim();
+        const newPwd = document.getElementById('editTrainerNewPwd').value;
+        const photoInput = document.getElementById('editTrainerPhoto');
+
+        trainers[idx].phone = phone;
+        trainers[idx].email = email;
+        if (newPwd) {
+            trainers[idx].password = newPwd;
+            document.getElementById('editTrainerNewPwd').value = '';
+        }
+
+        handlePhotoUpload(photoInput, function(photoData) {
+            if (photoData) trainers[idx].photo = photoData;
+            localStorage.setItem('collegeTrainers', JSON.stringify(trainers));
+            loadTrainerSession(trainers[idx]);
+            displayTrainers();
+            showToast("Trainer profile updated successfully!");
+        });
+    });
 
     function loadStudentSession(regNo) {
         let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
@@ -1181,7 +1251,9 @@
             ? `<span class="badge-cleared">Cleared</span>` 
             : `<span class="badge-balance">Bal: KES ${bal}</span>`;
 
-        // Certificate logic verification
+        document.getElementById('editStudentPhone').value = student.phone || '';
+        document.getElementById('editStudentEmail').value = student.email || '';
+
         const certBox = document.getElementById('certificateCard');
         const certLocked = document.getElementById('certLockedMsg');
         const printCertBtn = document.getElementById('printCertBtn');
@@ -1200,12 +1272,12 @@
         }
 
         const stmtPhoto = document.getElementById('stmtPhoto');
-        const detPhoto = document.getElementById('detPhoto');
+        const stuAvatar = document.getElementById('studentProfileAvatar');
         if (student.photo) {
             stmtPhoto.src = student.photo; stmtPhoto.style.display = 'block';
-            detPhoto.src = student.photo; detPhoto.style.display = 'block';
+            stuAvatar.src = student.photo; stuAvatar.style.display = 'block';
         } else {
-            stmtPhoto.style.display = 'none'; detPhoto.style.display = 'none';
+            stmtPhoto.style.display = 'none'; stuAvatar.style.display = 'none';
         }
 
         const stmtTbody = document.getElementById('statementTableBody');
@@ -1250,11 +1322,35 @@
             row.innerHTML = `<td>${m.date}</td><td><strong>${m.title}</strong></td><td>${m.desc}</td>`;
             resTbody.appendChild(row);
         });
-
-        document.getElementById('detName').textContent = student.name;
-        document.getElementById('detReg').textContent = student.reg;
-        document.getElementById('detCourse').textContent = student.course;
     }
+
+    document.getElementById('studentProfileForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const reg = sessionStorage.getItem('studentReg');
+        let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
+        const student = records.find(r => r.reg && r.reg.toLowerCase() === reg.toLowerCase());
+        if (!student) return;
+
+        const phone = document.getElementById('editStudentPhone').value.trim();
+        const email = document.getElementById('editStudentEmail').value.trim();
+        const newPwd = document.getElementById('editStudentNewPwd').value;
+        const photoInput = document.getElementById('editStudentPhoto');
+
+        student.phone = phone;
+        student.email = email;
+        if (newPwd) {
+            student.password = newPwd;
+            document.getElementById('editStudentNewPwd').value = '';
+        }
+
+        handlePhotoUpload(photoInput, function(photoData) {
+            if (photoData) student.photo = photoData;
+            localStorage.setItem('studentFeeRecords', JSON.stringify(records));
+            loadStudentSession(student.reg);
+            displayRecords();
+            showToast("Student profile updated successfully!");
+        });
+    });
 
     function switchAdminSubTab(subId, btnElement) {
         const parent = document.getElementById('adminPortalTab');
@@ -1281,17 +1377,18 @@
     }
 
     function handlePhotoUpload(inputElement, callback) {
-        const file = inputElement.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = e => callback(e.target.result);
-            reader.readAsDataURL(file);
-        } else {
+        if (!inputElement || !inputElement.files || inputElement.files.length === 0) {
             callback('');
+            return;
         }
+        const file = inputElement.files[0];
+        const reader = new FileReader();
+        reader.onload = e => callback(e.target.result);
+        reader.onerror = () => callback('');
+        reader.readAsDataURL(file);
     }
 
-    document.getElementById('feeForm').addEventListener('submit', async function(e) {
+    document.getElementById('feeForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const regInput = document.getElementById('regNumber').value.trim();
         const nameInput = document.getElementById('studentName').value;
@@ -1299,16 +1396,16 @@
         const rawPwd = document.getElementById('studentRawPassword').value;
         const amountPaidInput = parseFloat(document.getElementById('amountPaid').value) || 0;
         const mpesaInput = document.getElementById('mpesaCode').value.trim();
+        const phoneInput = document.getElementById('studentPhoneInput').value.trim();
+        const emailInput = document.getElementById('studentEmailInput').value.trim();
         const photoInput = document.getElementById('studentPhoto');
 
-        const passwordHash = await hashPassword(rawPwd);
-
         handlePhotoUpload(photoInput, function(photoData) {
-            saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaInput, photoData, passwordHash);
+            saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaInput, photoData, rawPwd, phoneInput, emailInput);
             document.getElementById('feeForm').reset();
             generateNextRegNumber();
             displayRecords();
-            showToast("Student admitted and password encrypted successfully.");
+            showToast("Student admitted successfully.");
         });
     });
 
@@ -1331,7 +1428,7 @@
             const randomCode = "MPESA" + Math.floor(100000 + Math.random() * 900000);
             let records = JSON.parse(localStorage.getItem('studentFeeRecords')) || [];
             let existing = records.find(r => r.reg.toLowerCase() === reg.toLowerCase());
-            saveStudentRecord(name, reg, course, amount, randomCode, existing ? existing.photo : '', existing ? existing.passwordHash : '');
+            saveStudentRecord(name, reg, course, amount, randomCode, existing ? existing.photo : '', existing ? existing.password : '', existing ? existing.phone : '', existing ? existing.email : '');
             amountInput.value = ''; phoneInput.value = '';
             loadStudentSession(reg);
             displayRecords();
@@ -1339,7 +1436,7 @@
         }, 3000);
     }
 
-    function saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaCode, photoData, passwordHash) {
+    function saveStudentRecord(nameInput, regInput, courseInput, amountPaidInput, mpesaCode, photoData, passwordVal, phoneVal, emailVal) {
         const totalFee = courseFeeStructure[courseInput] || 0;
         const now = new Date();
         const dateTimeString = now.toLocaleDateString() + ', ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -1354,7 +1451,9 @@
             existingStudent.lastUpdated = dateTimeString;
             existingStudent.course = courseInput;
             if (photoData) existingStudent.photo = photoData;
-            if (passwordHash) existingStudent.passwordHash = passwordHash;
+            if (passwordVal) existingStudent.password = passwordVal;
+            if (phoneVal) existingStudent.phone = phoneVal;
+            if (emailVal) existingStudent.email = emailVal;
             if (!existingStudent.history) existingStudent.history = [];
             existingStudent.history.push({ dateTime: dateTimeString, mpesa: mpesaCode || 'N/A', amountPaid: amountPaidInput, balanceAfter: existingStudent.balance });
         } else {
@@ -1363,7 +1462,8 @@
                 name: nameInput, reg: regInput, course: courseInput, totalFee: totalFee,
                 totalPaid: amountPaidInput, balance: newBalance > 0 ? newBalance : 0,
                 status: amountPaidInput >= totalFee ? "Cleared" : "Balance",
-                lastUpdated: dateTimeString, photo: photoData || '', passwordHash: passwordHash || '',
+                lastUpdated: dateTimeString, photo: photoData || '', password: passwordVal || '',
+                phone: phoneVal || '', email: emailVal || '',
                 history: [{ dateTime: dateTimeString, mpesa: mpesaCode || 'N/A', amountPaid: amountPaidInput, balanceAfter: newBalance > 0 ? newBalance : 0 }]
             });
         }
@@ -1424,17 +1524,17 @@
         showToast("CSV exported successfully.");
     }
 
-    document.getElementById('trainerForm').addEventListener('submit', async function(e) {
+    document.getElementById('trainerForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const rawPwd = document.getElementById('trainerRawPassword').value;
-        const passwordHash = await hashPassword(rawPwd);
 
         const trainer = {
             name: document.getElementById('trainerName').value,
             phone: document.getElementById('trainerPhone').value,
             unit: document.getElementById('trainerUnit').value,
             email: document.getElementById('trainerEmail').value,
-            passwordHash: passwordHash
+            password: rawPwd,
+            photo: ''
         };
         let trainers = JSON.parse(localStorage.getItem('collegeTrainers')) || [];
         trainers.push(trainer);
@@ -1442,7 +1542,7 @@
         document.getElementById('trainerForm').reset();
         displayTrainers();
         populateTrainerLoginDropdown();
-        showToast("Trainer profile registered with encrypted password!");
+        showToast("Trainer profile registered successfully!");
     });
 
     function displayTrainers() {
